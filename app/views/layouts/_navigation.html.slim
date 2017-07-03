@@ -1,0 +1,24 @@
+nav.navbar.navbar-default.fixed-top
+  div.container-fluid
+    div.navbar-header
+      button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#bs-example-collapse' aria-expandable='false'
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      = link_to 'Tsundoku', root_path, class: 'navbar-brand'
+
+    div.collapse.navbar-collapse#bs-example-collapse
+      ul.nav.navbar-nav
+        li.active= link_to 'Home', root_path
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown"
+            | Books
+            span.caret
+          ul.dropdown-menu role="books"
+            li
+              = link_to 'Browse', books_path
+            li
+              = link_to 'Create', find_path
+            li.divider
+            li
+              a href="#"  Separated link

@@ -1,0 +1,70 @@
+div.container
+  div.row
+    div.col-l-6.col-l-offset-3.col-md-6.col-md-offset-3
+      = form_for(@book, :html => {class: 'form-horizontal', role: 'form'}) do |f|
+        fieldset
+          legend align='center' Confirm Book Details
+          div.form-group
+            label.col-sm-2.control-label for='title'
+              = f.label :title
+            div.col-sm-8
+              = f.text_field :title, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            label.col-sm-2.control-label for='subtitle'
+              = f.label :subtitle
+            div.col-sm-8
+              = f.text_field :subtitle, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            label.col-sm-2.control-label for='author'
+              = f.label :author
+            div.col-sm-8
+              = f.text_field :author, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            label.col-sm-2.control-label for='description'
+              = f.label :description
+            div.col-sm-8
+              = f.text_area :description, rows: 15, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            label.col-sm-2.control-label for='text_snippet'
+              = f.label :text_snippet
+            div.col-sm-8
+              = f.text_area :text_snippet, rows: 4, class: 'form-control', readonly: "readonly"
+
+          div.form-group align='center'
+            img src="#{@book.thumbnail}"
+
+          div.form-group
+            label.col-sm-2.control-label for='thumbnail'
+              = f.label :thumbnail
+            div.col-sm-8
+              = f.text_field :thumbnail, class: 'form-control', readonly: "readonly"
+
+          div.form-group align='center'
+            img src="#{@book.small_thumbnail}"
+
+          div.form-group
+            label.col-sm-2.control-label for='small_thumbnail'
+              = f.label :small_thumbnail
+            div.col-sm-8
+              = f.text_field :small_thumbnail, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            label.col-sm-2.control-label for='isbn_10'
+              = f.label :isbn_10
+            div.col-sm-8
+              = f.text_field :isbn_10, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            label.col-sm-2.control-label for='isbn_13'
+              = f.label :isbn_13
+            div.col-sm-8
+              = f.text_field :isbn_13, class: 'form-control', readonly: "readonly"
+
+          div.form-group
+            div align='center'
+              = f.submit 'Create New Listing', method: :post, class: 'btn btn-primary btn-lg', align: 'center'
+
