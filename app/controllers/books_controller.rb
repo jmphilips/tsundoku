@@ -38,7 +38,8 @@ class BooksController < ApplicationController
       thumbnail: book_data['thumbnail'],
       small_thumbnail: book_data['small_thumbnail'],
       isbn_10: book_data['isbn_10'],
-      isbn_13: book_data['isbn_13']
+      isbn_13: book_data['isbn_13'],
+      user: current_user
     )
     flash[:success] = "Your book was successfully listed!"
   end
