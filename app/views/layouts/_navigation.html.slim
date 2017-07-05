@@ -16,9 +16,14 @@ nav.navbar.navbar-default.fixed-top
             span.caret
           ul.dropdown-menu role="books"
             li
-              = link_to 'Browse', books_path
+              = link_to 'Browse Available Books', books_path
             li
-              = link_to 'Create', find_path
+              = link_to 'List a Book', find_path
             li.divider
             li
               a href="#"  Separated link
+
+      - if user_signed_in?
+        ul.nav.navbar-nav.navbar-right
+          li
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete
