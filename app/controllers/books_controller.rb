@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.paginate(page: params[:page], per_page: 5)
+    @books = Book.where.not(user_id: current_user.id).paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -14,7 +14,17 @@ class BooksController < ApplicationController
 
   def create
     create_book(params)
-    redirect_to books_path
+    redirect_to my_books_path
+  end
+
+  def destroy
+    Book.find(params[:id]).destroy
+    flash[:danger] = 'Listing was successfully removed.'
+    redirect_to my_books_path
+  end
+
+  def my_books
+    @books = Book.where(user_id: current_user.id).paginate(page: params[:page], per_page: 5)
   end
 
   private
