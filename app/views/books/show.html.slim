@@ -10,5 +10,5 @@ div.col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
         p ISBN: #{@book.isbn_13}
     div.panel-footer
       div.btn-group.btn-group-justified
-      = link_to 'Request', books_path, class: 'btn btn-primary'
+      = link_to 'Request', requests_path({book_id: @book.id}), method: :post, class: 'btn btn-primary'
       = link_to 'Return', books_path, class: 'btn btn-danger'
