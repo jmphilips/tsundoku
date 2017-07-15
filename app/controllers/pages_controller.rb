@@ -6,8 +6,7 @@ class PagesController < ApplicationController
   end
 
   def search
-    isbn = params[:isbn]
-    response = Google.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{isbn}&key=#{API_KEY}")
+    response = Google.get("https://www.googleapis.com/books/v1/volumes?q=isbn:#{params[:isbn]}&key=#{API_KEY}")
     @book = new_book(response)
     redirect_to new_book_path(@book)
   end
@@ -21,9 +20,14 @@ class PagesController < ApplicationController
   private
 
   def new_book(json_response)
-    response = JSON.parse json_response
-    search_info = response['items'].first['searchInfo']
-    response = response['items'].first['volumeInfo']
+    response = JSON.parse(json_response)['items'].first
+    text_snippet = nil
+
+    if response['searchInfo'].present?
+      text_snippet = response['searchInfo']['textSnippet']
+    end
+
+    response = response['volumeInfo']
 
     {
       title: response['title'] || nil,
@@ -34,7 +38,7 @@ class PagesController < ApplicationController
       isbn_13: response['industryIdentifiers'].second['identifier'] || nil,
       thumbnail: response['imageLinks']['thumbnail'] || nil,
       small_thumbnail: response['imageLinks']['smallThumbnail'] || nil,
-      text_snippet: search_info['textSnippet'] || nil,
+      text_snippet: text_snippet,
       categories: response['categories'].join(' ')
     }
   end

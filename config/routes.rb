@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   post 'search', to: 'pages#search'
 
   resources :books
-  resources :requests, only: [:index, :create]
+  resources :requests, only: [:index, :create, :show, :destroy]
   get 'my_books', to: 'books#my_books'
 end

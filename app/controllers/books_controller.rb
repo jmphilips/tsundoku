@@ -25,6 +25,13 @@ class BooksController < ApplicationController
     redirect_to my_books_path
   end
 
+  def update
+    book = Book.find(params[:id])
+    book.update!(state: params[:state])
+    flash[:success] = 'Book request accepted. Please send the user an email.' if book.save
+    redirect_to my_books_path
+  end
+
   def my_books
     @books = Book.where(user_id: current_user.id).paginate(page: params[:page], per_page: 5)
   end
