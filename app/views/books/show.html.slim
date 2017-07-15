@@ -1,14 +1,16 @@
 div.col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
-  div.panel.panel-default
+  div.panel.panel-info
+    div.panel-heading
+      div.row
+        div.container
+          h2.panel-title #{@book.title}
+          small by #{@book.author}
     div.panel-body
-      h1 align='center' #{@book.title}
       div align='center'
         img src="#{@book.thumbnail}"
-      div align='center'
-        p #{@book.title}
-        small by #{@book.author}
-        p ISBN: #{@book.isbn_13}
+      div
+        p #{@book.description}
     div.panel-footer
       div.btn-group.btn-group-justified
-      = link_to 'Request', requests_path({book_id: @book.id}), method: :post, class: 'btn btn-primary'
+      = link_to 'Request', requests_path({book_id: @book.id}), method: :post, class: 'btn btn-success'
       = link_to 'Return', books_path, class: 'btn btn-danger'

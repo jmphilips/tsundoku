@@ -3,15 +3,12 @@ div align='center'
   = will_paginate
 div.col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2
   - @books.each do |book|
-    div.panel.panel-default
+    div.panel.panel-info
       div.panel-heading
-        div.row
-          div.col-xs-5
-            img align='center' src="#{book.small_thumbnail}"
-          div.col-xs-7 
-            h3.panel-title= link_to "#{book.title}", book_path(book)
-            small by #{book.author}
-            p About: #{book.text_snippet}
+        h2.panel-title= link_to "#{book.title}", book_path(book)
+        small by #{book.author}
+      div.panel-body
+        p #{book.text_snippet}
       div.panel-body
         div.col-s-4.col-s-offset-4.col-xs-6.col-xs-offset-3
           = link_to 'View', book_path(book), class: 'btn btn-md btn-block btn-primary'

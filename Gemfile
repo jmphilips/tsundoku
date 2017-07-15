@@ -19,7 +19,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'bootswatch-rails'
 gem 'httparty', '~> 0.15.5'
 gem 'certified', '~> 1.0'
-gem 'pry', '~> 0.10.4'
 gem 'dotenv-rails'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'devise'
@@ -36,6 +35,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'sqlite3'  
   gem 'selenium-webdriver'
+  gem 'pry', '~> 0.10.4'
 end
 
 group :development do

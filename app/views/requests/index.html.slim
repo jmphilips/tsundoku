@@ -1,3 +1,16 @@
 h1 align='center' Your Requested Books
-- @requests.each do |request|
-  p #{request.book.title}
+div align='center'
+  = will_paginate
+div.col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2
+  - @requests.each do |request|
+    div.panel.panel-info
+      div.panel-heading
+        h2.panel-title= link_to "#{request.book.title}", book_path(request.book)
+        small by #{request.book.author}
+      div.panel-body
+        p #{request.book.text_snippet}
+      div.panel-body
+        div.col-s-4.col-s-offset-4.col-xs-6.col-xs-offset-3
+          = link_to 'View', book_path(request.book), class: 'btn btn-md btn-block btn-primary'
+div align='center'
+  = will_paginate
