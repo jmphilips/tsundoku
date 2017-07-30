@@ -3,4 +3,6 @@ class Book < ApplicationRecord
   has_many :requests
 
   ACCEPTABLE_STATES = %w( listed requested accepted )
+  validates_inclusion_of :state, in: ACCEPTABLE_STATES
+  
 end

@@ -17,6 +17,14 @@ class PagesController < ApplicationController
   def add
   end
 
+  def giver_match
+    @request = Request.where(giver_id: current_user.id, book_id: params[:book_id], state: 'accepted')
+  end
+
+  def taker_match
+    @request = Request.where(taker_id: current_user.id, book_id: params[:book_id], state: 'accepted')
+  end
+
   private
 
   def new_book(json_response)

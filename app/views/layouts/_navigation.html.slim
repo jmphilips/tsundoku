@@ -24,6 +24,8 @@ nav.navbar.navbar-default.fixed-top
                 = link_to 'Your Listed Books', my_books_path
               li
                 = link_to 'Your Requested Books', requests_path
+              - if user_has_match?
+                li I like it a lot
 
       - if user_signed_in?
         ul.nav.navbar-nav.navbar-right
