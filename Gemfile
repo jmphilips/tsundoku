@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.1.2'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
@@ -33,7 +32,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'sqlite3'  
+  gem 'sqlite3' 
   gem 'selenium-webdriver'
   gem 'pry', '~> 0.10.4'
 end

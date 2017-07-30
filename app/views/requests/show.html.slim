@@ -7,6 +7,6 @@ div.col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2
       p Requested by: #{@request.taker.email}
     div.panel-footer
       div align='center'
-        = link_to 'Accept', book_path({book_id: @request.book.id, state: 'accepted'}), class: 'btn btn-m btn-success'
+        = link_to 'Accept', book_path({book_id: @request.book.id, state: 'accepted'}), method: :put, class: 'btn btn-m btn-success'
         = mail_to "#{@request.taker.email}", "Send Email", class: 'btn btn-s btn-primary'
         = link_to 'Rejected', request_path(@request), method: :delete, class: 'btn btn-m btn-danger'
